@@ -18,4 +18,6 @@ type Query {
   appName: String
   # New query to return a list of products
   allProducts: [Product!]!
+  productsByAuthor(authorName: String!): [Product!]!
+
 }

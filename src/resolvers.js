@@ -48,9 +48,17 @@ const resolvers = {
     allProducts: () => {
       return productsData
     },
-  },
+    productsByAuthor: (_, {authorName}) => {
+        const user = usersData.find(user => user.userName === authorName);
+        return productsData.filter(product => product.authorId === user.id)
+
+    },
+  }, 
 
   Product: {
+     name: (product) => { //override default resolver behaviour
+    return product.name + "!" 
+  },
     author: (product) => {
       return usersData.find(user => user.id === product.authorId)
     },
