@@ -1,16 +1,8 @@
 const { ApolloServer, gql } = require('apollo-server')
+const { readSchema } = require('./schema.js')
+const { resolvers } = require('./resolvers.js')
 
-const typeDefs = gql`
-type Query {
-  appName: String
-}
-`
-
-const resolvers = {
-  Query: {
-    appName: () => 'ProductHunt'
-  },
-}
+const typeDefs = readSchema()
 
 const server = new ApolloServer({
   typeDefs, // schema for our GraphQL API

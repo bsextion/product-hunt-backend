@@ -1,0 +1,21 @@
+type Product {
+  name: String!,
+  description: String!,
+  url: String!,
+  numberOfVotes: Int!,
+  publicationAt: String!,
+  # New field that we've added
+  author: User!,
+}
+
+type User {
+  id: ID!,
+  userName: String!,
+  fullName: String!,
+}
+
+type Query {
+  appName: String
+  # New query to return a list of products
+  allProducts: [Product!]!
+}
