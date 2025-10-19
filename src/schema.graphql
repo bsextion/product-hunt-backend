@@ -6,6 +6,7 @@ type Product {
   publicationAt: String!,
   # New field that we've added
   author: User!,
+  categories: [Category!]!
 }
 
 type User {
@@ -14,10 +15,17 @@ type User {
   fullName: String!,
 }
 
+type Category {
+  id: ID!,
+  name: String!,
+  slug: String!,
+}
+
 type Query {
   appName: String
   # New query to return a list of products
   allProducts: [Product!]!
   productsByAuthor(authorName: String!): [Product!]!
+  productsByCategory(slug: String!): [Product!]!
 
 }
